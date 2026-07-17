@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Platform • Project Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; font-size: 17.5px; line-height: 1.7; }
+        .section { display: none; }
+        .section.active { display: block; }
+        .nav-item { padding: 12px 16px; border-radius: 10px; margin-bottom: 4px; font-weight: 500; }
+        .nav-item.active { background-color: #0ea5e9; color: white; font-weight: 600; }
+        .card { transition: all 0.2s ease; }
+        .large-text { font-size: 20px; line-height: 1.75; }
+        .content-text { font-size: 17px; line-height: 1.75; }
+        .agent-card { border-left: 5px solid #0ea5e9; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-4">
+                <div class="w-12 h-12 bg-sky-600 rounded-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-brain text-white text-3xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold">AI Learning Platform</h1>
+                    <p class="text-sm text-slate-500 -mt-1">Project Hub • Peter W Watson</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-x-3">
+                <button onclick="toggleLargeText()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-2xl text-sm font-medium flex items-center gap-x-2">
+                    <i class="fa-solid fa-text-height"></i> <span>Large Text</span>
+                </button>
+                <button onclick="toggleHighContrast()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-2xl text-sm font-medium flex items-center gap-x-2">
+                    <i class="fa-solid fa-adjust"></i> <span>High Contrast</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-screen-xl mx-auto px-6 flex gap-8 pt-8 pb-16">
+        
+        <!-- Sidebar Navigation -->
+        <div class="w-72 flex-shrink-0 hidden lg:block">
+            <div class="bg-white border border-slate-200 rounded-3xl p-4 sticky top-24">
+                <nav class="space-y-1 text-base">
+                    <div onclick="showSection('overview')" class="nav-item flex items-center gap-x-3 cursor-pointer active" id="nav-overview">
+                        <i class="fa-solid fa-home w-5"></i> <span>Project Overview</span>
+                    </div>
+                    <div onclick="showSection('vision')" class="nav-item flex items-center gap-x-3 cursor-pointer" id="nav-vision">
+                        <i class="fa-solid fa-bullseye w-5"></i> <span>Vision Document</span>
+                    </div>
+                    <div onclick="showSection('architecture')" class="nav-item flex items-center gap-x-3 cursor-pointer" id="nav-architecture">
+                        <i class="fa-solid fa-sitemap w-5"></i> <span>Architecture</span>
+                    </div>
+                    <div onclick="showSection('strategy')" class="nav-item flex items-center gap-x-3 cursor-pointer" id="nav-strategy">
+                        <i class="fa-solid fa-chess-rook w-5"></i> <span>Development Strategy</span>
+                    </div>
+                    <div onclick="showSection('loop')" class="nav-item flex items-center gap-x-3 cursor-pointer" id="nav-loop">
+                        <i class="fa-solid fa-sync w-5"></i> <span>Ideal Development Loop</span>
+                    </div>
+                    <div onclick="showSection('agents')" class="nav-item flex items-center gap-x-3 cursor-pointer" id="nav-agents">
+                        <i class="fa-solid fa-users w-5"></i> <span>Agent Team &amp; Roles</span>
+                    </div>
+                    <div onclick="showSection('current-state')" class="nav-item flex items-center gap-x-3 cursor-pointer" id="nav-current-state">
+                        <i class="fa-solid fa-chart-line w-5"></i> <span>Current State &amp; TODO</span>
+                    </div>
+                    <div onclick="showSection('handoff')" class="nav-item flex items-center gap-x-3 cursor-pointer" id="nav-handoff">
+                        <i class="fa-solid fa-exchange-alt w-5"></i> <span>Handoff Protocol</span>
+                    </div>
+                    <div onclick="showSection('processes')" class="nav-item flex items-center gap-x-3 cursor-pointer" id="nav-processes">
+                        <i class="fa-solid fa-cogs w-5"></i> <span>Key Processes</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 max-w-4xl">
+            
+            <!-- OVERVIEW -->
+            <div id="overview" class="section active">
+                <h1 class="text-4xl font-bold mb-4">Project Hub</h1>
+                <p class="text-xl text-slate-600 mb-8">Central place for the AI Learning Platform project. All vision, architecture, strategy, current work, and processes in one place.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white border border-slate-200 rounded-3xl p-7">
+                        <h3 class="font-semibold text-xl mb-3">Purpose</h3>
+                        <p class="content-text">A real, high-quality learning system to help Peter master modern AI (especially agentic systems, loops, and practical use) using only trusted sources and clear progression.</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-3xl p-7">
+                        <h3 class="font-semibold text-xl mb-3">Core Approach</h3>
+                        <p class="content-text">Multi-agent collaboration with strict quality gates, real content only, and transparent reporting. The system itself demonstrates good agentic practices.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VISION -->
+            <div id="vision" class="section">
+                <h2 class="text-3xl font-bold mb-6">Vision Document</h2>
+                <div class="bg-white border border-slate-200 rounded-3xl p-8 content-text">
+                    <p><strong>Vision:</strong> A trustworthy personal learning system that gives clear understanding of the latest AI developments (2026 focus), best ways to use AI effectively, and actionable skills for real work.</p>
+                    <p class="mt-4"><strong>Non-negotiables:</strong> Real content only • Quality review on everything • Progressive layered learning • Real (not fake) progress tracking • Continual updates from trusted sources.</p>
+                </div>
+                <p class="mt-4 text-sm text-slate-500">Full detailed version available in <code>Vision_and_Strategy_Document.md</code></p>
+            </div>
+
+            <!-- ARCHITECTURE -->
+            <div id="architecture" class="section">
+                <h2 class="text-3xl font-bold mb-6">System Architecture</h2>
+                <div class="space-y-6">
+                    <div class="bg-white border border-slate-200 rounded-3xl p-7">
+                        <h3 class="font-semibold mb-3">Layers</h3>
+                        <ul class="list-disc pl-6 space-y-2 content-text">
+                            <li><strong>Database Layer</strong>: SQLite or structured files to manage resources, tasks, progress, and summaries.</li>
+                            <li><strong>Agent Layer</strong>: Multi-agent team running disciplined loops with quality gates.</li>
+                            <li><strong>Interface Layer</strong>: Accessible webpage that reads from the database/files and displays current state.</li>
+                            <li><strong>Documentation Layer</strong>: This Hub + key Markdown files (Vision, Work Logs, Reports).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEVELOPMENT STRATEGY -->
+            <div id="strategy" class="section">
+                <h2 class="text-3xl font-bold mb-6">Development Strategy</h2>
+                <div class="bg-white border border-slate-200 rounded-3xl p-7 content-text">
+                    <p>We use a strict multi-agent loop with clear handoffs. Every piece of work goes through Planner → Executor → Reviewer → Reporter.</p>
+                    <p class="mt-4">Focus is always on <strong>real learning value</strong> for Peter, not building infrastructure for its own sake. The database supports the learning system — it is not the main product.</p>
+                </div>
+            </div>
+
+            <!-- IDEAL DEVELOPMENT LOOP -->
+            <div id="loop" class="section">
+                <h2 class="text-3xl font-bold mb-6">Ideal Development Loop</h2>
+                <div class="bg-white border border-slate-200 rounded-3xl p-7">
+                    <ol class="space-y-4 content-text">
+                        <li><strong>1. Leader / Architect</strong> — Reviews vision and current state. Defines or refines the next piece of work.</li>
+                        <li><strong>2. Planner</strong> — Breaks the work into clear tasks and records them in the database.</li>
+                        <li><strong>3. Executor</strong> — Completes the tasks (research, summarisation, coding, updating files, etc.).</li>
+                        <li><strong>4. Reviewer</strong> — Checks quality, accuracy, and alignment with vision. Rejects or requests fixes if needed.</li>
+                        <li><strong>5. Reporter</strong> — Produces a clear status report and updates the Hub / work log.</li>
+                        <li><strong>6. Handoff</strong> — Records what was done, current state, and what is next for the next agent or session.</li>
+                    </ol>
+                    <p class="mt-6 text-sm text-emerald-600 font-medium">This loop ensures quality and traceability at every step.</p>
+                </div>
+            </div>
+
+            <!-- AGENT TEAM -->
+            <div id="agents" class="section">
+                <h2 class="text-3xl font-bold mb-6">Agent Team &amp; Roles</h2>
+                <div class="space-y-5">
+                    <div class="agent-card bg-white border border-slate-200 rounded-3xl p-6">
+                        <h3 class="font-semibold text-xl">Leader / Vision Owner</h3>
+                        <p class="text-sm text-slate-500 mb-2">Sets direction, approves major changes, maintains the Vision document.</p>
+                        <p class="content-text"><strong>Work Record:</strong> Updates Vision &amp; Strategy Document and produces high-level status reports.</p>
+                    </div>
+                    <div class="agent-card bg-white border border-slate-200 rounded-3xl p-6">
+                        <h3 class="font-semibold text-xl">Architect</h3>
+                        <p class="text-sm text-slate-500 mb-2">Designs system structure, data models, and processes.</p>
+                        <p class="content-text"><strong>Work Record:</strong> Maintains Architecture and Process documents.</p>
+                    </div>
+                    <div class="agent-card bg-white border border-slate-200 rounded-3xl p-6">
+                        <h3 class="font-semibold text-xl">Researcher / Curator</h3>
+                        <p class="text-sm text-slate-500 mb-2">Finds high-quality new content from trusted sources.</p>
+                        <p class="content-text"><strong>Work Record:</strong> Adds entries to Resources database with source, quality score, and summary.</p>
+                    </div>
+                    <div class="agent-card bg-white border border-slate-200 rounded-3xl p-6">
+                        <h3 class="font-semibold text-xl">Analyst</h3>
+                        <p class="text-sm text-slate-500 mb-2">Processes long content (transcribes videos, summarises threads).</p>
+                        <p class="content-text"><strong>Work Record:</strong> Creates structured summaries stored in the database.</p>
+                    </div>
+                    <div class="agent-card bg-white border border-slate-200 rounded-3xl p-6">
+                        <h3 class="font-semibold text-xl">Educator</h3>
+                        <p class="text-sm text-slate-500 mb-2">Turns content into clear, layered learning material with practical application steps.</p>
+                        <p class="content-text"><strong>Work Record:</strong> Creates or updates learning modules and explanations.</p>
+                    </div>
+                    <div class="agent-card bg-white border border-slate-200 rounded-3xl p-6">
+                        <h3 class="font-semibold text-xl">Reviewer / QA</h3>
+                        <p class="text-sm text-slate-500 mb-2">Quality gate — checks accuracy, clarity, actionability, and vision alignment.</p>
+                        <p class="content-text"><strong>Work Record:</strong> Adds review notes and approval status to work items.</p>
+                    </div>
+                    <div class="agent-card bg-white border border-slate-200 rounded-3xl p-6">
+                        <h3 class="font-semibold text-xl">Reporter</h3>
+                        <p class="text-sm text-slate-500 mb-2">Produces clear status reports after each loop.</p>
+                        <p class="content-text"><strong>Work Record:</strong> Updates Current State and adds reports to the Hub.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CURRENT STATE & TODO -->
+            <div id="current-state" class="section">
+                <h2 class="text-3xl font-bold mb-6">Current State of Delivery</h2>
+                <div class="bg-white border border-slate-200 rounded-3xl p-7">
+                    <h3 class="font-semibold mb-3">What Exists</h3>
+                    <ul class="list-disc pl-6 content-text">
+                        <li>Vision &amp; Strategy Document (v1.0)</li>
+                        <li>Project Hub (this website)</li>
+                        <li>Multi-agent team with defined roles and quality process</li>
+                        <li>Web interface with real trusted resources</li>
+                        <li>One detailed real example breakdown</li>
+                    </ul>
+                    
+                    <h3 class="font-semibold mt-6 mb-3">Current TODO (Prioritised)</h3>
+                    <ol class="list-decimal pl-6 content-text">
+                        <li>Expand real resources library with more high-quality 2026 content</li>
+                        <li>Create first structured Learning Path</li>
+                        <li>Set up basic database for resources + progress</li>
+                        <li>Improve webpage to feel more like a dedicated learning tool</li>
+                        <li>Add more transcribed/summarised video content</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- HANDOFF PROTOCOL -->
+            <div id="handoff" class="section">
+                <h2 class="text-3xl font-bold mb-6">Handoff Protocol</h2>
+                <div class="bg-white border border-slate-200 rounded-3xl p-7 content-text">
+                    <p><strong>Between Agents (within a session):</strong></p>
+                    <ul class="list-disc pl-6 mt-2">
+                        <li>Each agent appends a short work log entry (what was done, decisions, open items).</li>
+                        <li>Explicit handoff note: “Handing off to Reviewer with the following status…”</li>
+                    </ul>
+                    
+                    <p class="mt-5"><strong>Between Sessions:</strong></p>
+                    <ul class="list-disc pl-6 mt-2">
+                        <li>New session must first read the latest <strong>Vision_and_Strategy_Document.md</strong> and <strong>Current_State.md</strong> (or this Hub).</li>
+                        <li>Start with a summary of the latest work and next priorities.</li>
+                        <li>Reference the Project Hub for all documents.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PROCESSES -->
+            <div id="processes" class="section">
+                <h2 class="text-3xl font-bold mb-6">Key Processes</h2>
+                <div class="bg-white border border-slate-200 rounded-3xl p-7 content-text">
+                    <p><strong>Content Addition Process:</strong> Researcher → Analyst (if needed) → Educator → Reviewer → Librarian (add to DB) → Reporter</p>
+                    <p class="mt-4"><strong>Session Start Protocol:</strong> Always begin by reading the latest Vision document and Current State. Confirm alignment before starting work.</p>
+                    <p class="mt-4"><strong>Quality Gate:</strong> Nothing reaches Peter without passing the Reviewer.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            
+            document.querySelectorAll('.nav-item').forEach(nav => {
+                nav.classList.remove('active');
+                if (nav.id === 'nav-' + sectionId) nav.classList.add('active');
+            });
+        }
+        
+        function toggleLargeText() {
+            document.body.classList.toggle('large-text');
+        }
+        
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+            if (document.body.classList.contains('high-contrast')) {
+                document.body.style.backgroundColor = '#ffffff';
+                document.body.style.color = '#111111';
+            } else {
+                document.body.style.backgroundColor = '';
+                document.body.style.color = '';
+            }
+        }
+        
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === '/' && document.activeElement.tagName === 'BODY') {
+                e.preventDefault();
+                const firstNav = document.querySelector('.nav-item');
+                if (firstNav) firstNav.click();
+            }
+        });
+        
+        console.log('%c[Project Hub] Loaded successfully. All documents and processes in one place.', 'color:#64748b');
+    </script>
+</body>
+</html>
