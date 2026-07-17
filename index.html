@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Platform • Project Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; font-size: 17.5px; line-height: 1.7; }
+        .section { display: none; }
+        .section.active { display: block; }
+        .nav-item { padding: 11px 14px; border-radius: 10px; margin-bottom: 3px; font-weight: 500; cursor: pointer; }
+        .nav-item:hover { background-color: #f1f5f9; }
+        .nav-item.active { background-color: #0ea5e9; color: white; font-weight: 600; }
+        .agent-card { border-left: 5px solid #0ea5e9; }
+        .large-text { font-size: 20px !important; line-height: 1.75 !important; }
+        .content-block { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.25rem; }
+        h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-x-3">
+                <div class="w-11 h-11 bg-sky-600 rounded-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-brain text-white text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold leading-tight">AI Learning Platform</h1>
+                    <p class="text-xs text-slate-500">Project Hub • Peter W Watson</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleLargeText()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 rounded-2xl text-sm font-medium">
+                    <i class="fa-solid fa-text-height"></i> Large Text
+                </button>
+                <button onclick="toggleHighContrast()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 rounded-2xl text-sm font-medium">
+                    <i class="fa-solid fa-adjust"></i> Contrast
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row gap-6 pt-6 pb-16">
+        <div class="lg:w-64 flex-shrink-0">
+            <div class="bg-white border border-slate-200 rounded-2xl p-3 sticky top-24">
+                <nav class="space-y-1 text-[15px]">
+                    <div onclick="showSection('overview')" class="nav-item active" id="nav-overview"><i class="fa-solid fa-home w-5"></i> Overview</div>
+                    <div onclick="showSection('vision')" class="nav-item" id="nav-vision"><i class="fa-solid fa-bullseye w-5"></i> Full Vision</div>
+                    <div onclick="showSection('agents')" class="nav-item" id="nav-agents"><i class="fa-solid fa-users w-5"></i> Agents & Roles</div>
+                    <div onclick="showSection('loop')" class="nav-item" id="nav-loop"><i class="fa-solid fa-sync w-5"></i> Development Loop</div>
+                    <div onclick="showSection('handoff')" class="nav-item" id="nav-handoff"><i class="fa-solid fa-exchange-alt w-5"></i> Handoff Protocol</div>
+                    <div onclick="showSection('current')" class="nav-item" id="nav-current"><i class="fa-solid fa-chart-line w-5"></i> Current State & TODO</div>
+                    <div onclick="showSection('resources')" class="nav-item" id="nav-resources"><i class="fa-solid fa-book w-5"></i> Real Resources</div>
+                    <div onclick="showSection('processes')" class="nav-item" id="nav-processes"><i class="fa-solid fa-cogs w-5"></i> Key Processes</div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="flex-1 min-w-0" id="main-content">
+            <div class="content-block"><p>Loading content...</p></div>
+        </div>
+    </div>
+
+    <script src="content.js"></script>
+    <script>
+        function renderContent() {
+            const c = platformContent;
+            const main = document.getElementById('main-content');
+            main.innerHTML = `
+                <div id="overview" class="section active">
+                    <h2>Project Overview</h2>
+                    <div class="content-block">
+                        <p class="mb-4"><strong>Purpose:</strong> ${c.overview.purpose}</p>
+                        <p><strong>Core rule:</strong> ${c.overview.coreRule}</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>How to use this Hub</h3>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Click any section in the left menu to see full details.</li>
+                            <li>Use <strong>Large Text</strong> and <strong>Contrast</strong> buttons at the top for easier reading.</li>
+                            <li>All documents and processes are written so you can review exactly what the agents are working from.</li>
+                            <li><strong>Important:</strong> Only the content.js file needs to be updated. This index.html file stays the same.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="vision" class="section">
+                    <h2>Vision & Strategy Document</h2>
+                    <div class="content-block">
+                        <p class="text-sm text-slate-500 mb-4">Version ${c.vision.version} • ${c.vision.date} • Owner: ${c.vision.owner}</p>
+                        <h3>1. Vision Statement</h3>
+                        <p class="mb-4 whitespace-pre-line">${c.vision.statement}</p>
+                        <h3 class="mt-6">2. Core Principles (Non-Negotiable)</h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            ${c.vision.principles.map(p => '<li>' + p + '</li>').join('')}
+                        </ul>
+                        <h3 class="mt-6">3. What Success Looks Like</h3>
+                        <ul class="list-disc pl-5 space-y-1">
+                            ${c.vision.success.map(s => '<li>' + s + '</li>').join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="agents" class="section">
+                    <h2>Agent Team & Roles</h2>
+                    <p class="mb-4 text-slate-600">Each agent has a clear responsibility. Their work is documented so you can always review what has been done.</p>
+                    <div class="space-y-4">
+                        ${c.agents.map(a => `
+                            <div class="content-block agent-card">
+                                <h3>${a.name}</h3>
+                                <p class="text-sm text-slate-500 mb-2">${a.role}</p>
+                                <p><strong>Work Record:</strong> ${a.workRecord}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div id="loop" class="section">
+                    <h2>Ideal Development Loop</h2>
+                    <div class="content-block">
+                        <p class="mb-4">This is the loop we use for every significant piece of work.</p>
+                        <ol class="list-decimal pl-5 space-y-3">
+                            ${c.developmentLoop.map(step => '<li>' + step + '</li>').join('')}
+                        </ol>
+                        <p class="mt-4 p-3 bg-emerald-50 rounded-lg text-sm"><strong>Self-improvement requirement:</strong> ${c.selfImprovementNote}</p>
+                    </div>
+                </div>
+
+                <div id="handoff" class="section">
+                    <h2>Handoff Protocol</h2>
+                    <div class="content-block">
+                        <h3>Between Agents (same session)</h3>
+                        <p class="mb-4">${c.handoff.betweenAgents}</p>
+                        <h3>Between Sessions (new chat)</h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            ${c.handoff.betweenSessions.map(s => '<li>' + s + '</li>').join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="current" class="section">
+                    <h2>Current State of Delivery & TODO</h2>
+                    <div class="content-block">
+                        <h3>What Exists Now (${c.currentState.date})</h3>
+                        <ul class="list-disc pl-5 space-y-1">
+                            ${c.currentState.exists.map(e => '<li>' + e + '</li>').join('')}
+                        </ul>
+                    </div>
+                    <div class="content-block">
+                        <h3>Current TODO (Prioritised)</h3>
+                        <ol class="list-decimal pl-5 space-y-2">
+                            ${c.currentState.todo.map(t => '<li>' + t + '</li>').join('')}
+                        </ol>
+                    </div>
+                    <div class="content-block">
+                        <h3>Latest Progress Report</h3>
+                        <p>${c.currentState.latestReport}</p>
+                    </div>
+                </div>
+
+                <div id="resources" class="section">
+                    <h2>Real Trusted Resources</h2>
+                    <p class="mb-4 text-slate-600">Only high-quality sources. Quality scores are given by the Reviewer agent.</p>
+                    <div class="space-y-4">
+                        ${c.resources.map(r => `
+                            <div class="content-block">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg">${r.title}</h3>
+                                    <span class="text-emerald-600 font-bold">${r.score}</span>
+                                </div>
+                                <p class="text-sm text-slate-500 mb-2">${r.source}</p>
+                                <p class="mb-3">${r.why}</p>
+                                ${r.link ? '<a href="' + r.link + '" target="_blank" class="text-sky-600 font-medium">Open source →</a>' : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div id="processes" class="section">
+                    <h2>Key Processes</h2>
+                    <div class="content-block">
+                        <h3>Content Addition Process</h3>
+                        <p>${c.processes.contentAddition}</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Session Start Protocol</h3>
+                        <p>${c.processes.sessionStart}</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Quality Gate</h3>
+                        <p>${c.processes.qualityGate}</p>
+                    </div>
+                    <div class="content-block" style="border-left: 5px solid #059669;">
+                        <h3>System Self-Improvement (Meta-Loop)</h3>
+                        <p>${c.processes.selfImprovement}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            const el = document.getElementById(id);
+            if (el) el.classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            const nav = document.getElementById('nav-' + id);
+            if (nav) nav.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function toggleLargeText() {
+            document.body.classList.toggle('large-text');
+        }
+
+        function toggleHighContrast() {
+            if (document.body.style.backgroundColor === 'rgb(255, 255, 255)') {
+                document.body.style.backgroundColor = '';
+                document.body.style.color = '';
+            } else {
+                document.body.style.backgroundColor = '#ffffff';
+                document.body.style.color = '#111111';
+            }
+        }
+
+        if (typeof platformContent !== 'undefined') {
+            renderContent();
+        } else {
+            document.getElementById('main-content').innerHTML = '<div class="content-block"><p class="text-red-600">Error: content.js failed to load. Make sure content.js is in the same folder as index.html.</p></div>';
+        }
+    </script>
+</body>
+</html>
